@@ -2,6 +2,11 @@
 
 buildscript {
     ext.kotlin_version = '1.1.3-2'
+    ext.compile_sdk_version = 26
+    ext.build_tool_version = "26.0.0"
+    ext.dev_min_sdk_version = 22
+    ext.prod_min_sdk_version = 15
+    ext.traget_sdk_version = 26
     repositories {
         google()
         jcenter()

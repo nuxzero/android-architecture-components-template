@@ -5,20 +5,34 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    compileSdkVersion compile_sdk_version
+    buildToolsVersion build_tool_version
     defaultConfig {
         applicationId "com.example.nux.news"
-        minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion traget_sdk_version
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        flavorSelection "newsapp", "dev"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "newsapp"
+    productFlavors {
+        dev {
+            dimension "newsapp"
+            minSdkVersion dev_min_sdk_version
+            resConfigs "en", "xxhdpi"
+        }
+        prod {
+            dimension "newsapp"
+            minSdkVersion prod_min_sdk_version
         }
     }
 }
