@@ -40,3 +40,5 @@ group: stable
 dist: precise
 os: linux
 
+notifications:
+  slack: cafecodeteam:WqDdalt4H7y1ZbEwJq8DMlNV
