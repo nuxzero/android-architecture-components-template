@@ -37,13 +37,45 @@ android {
     }
 }
 
+// Share code and resources between testing directories
+android.sourceSets {
+    test {
+        java.srcDirs += "$projectDir/src/testShared/java"
+        resources.srcDirs += "$projectDir/src/testShared/resources"
+    }
+
+    androidTest {
+        java.srcDirs += "$projectDir/src/testShared/java"
+        resources.srcDirs += "$projectDir/src/testShared/resources"
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation ('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$android_support_version"
+    implementation "com.android.support.constraint:constraint-layout:$constraint_layout_version"
+
+    // Room Persistence
+    implementation "android.arch.persistence.room:runtime:$arch_version"
+    implementation "android.arch.persistence.room:rxjava2:$arch_version"
+    kapt "android.arch.persistence.room:compiler:$arch_version"
+    testImplementation "android.arch.persistence.room:testing:$arch_version"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+
+    // Gson
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    // Android test
+    androidTestImplementation ("com.android.support.test.espresso:espresso-core:$espresso_version", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:26.0.0-beta2'
-    testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    // Unit test
+    testImplementation "junit:junit:$junit_version"
+
 }
