@@ -1,4 +1,4 @@
-package com.example.nux.news.injection
+package com.example.nux.news.app
 
 import com.example.nux.news.util.BaseSchedulerProvider
 import dagger.Module
@@ -12,5 +12,7 @@ class AppModule {
     fun provideScheduleProvider(): BaseSchedulerProvider {
         return SchedulerProvider()
     }
+
+
 
 }

@@ -1,7 +1,7 @@
 package com.example.nux.news.data
 
 import dagger.Component
-import com.example.nux.news.injection.AppModule
+import com.example.nux.news.app.AppModule
 import com.example.nux.news.util.BaseSchedulerProvider
 import javax.inject.Singleton
 
