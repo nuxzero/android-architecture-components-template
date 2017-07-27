@@ -7,18 +7,19 @@ buildscript {
     ext.dev_min_sdk_version = 22
     ext.prod_min_sdk_version = 15
     ext.traget_sdk_version = 26
-    ext.android_support_version = "26.0.0-beta2"
+    ext.android_support_version = "26.0.0"
     ext.espresso_version = "2.2.2"
     ext.junit_version = "4.12"
     ext.constraint_layout_version = "1.0.2"
-    ext.gradle_version = "3.0.0-alpha7"
-    ext.arch_version = "1.0.0-alpha4"
+    ext.gradle_version = "3.0.0-alpha8"
+    ext.arch_version = "1.0.0-alpha7"
     ext.retrofit_version = "2.3.0"
     ext.gson_version = "2.8.1"
     ext.rxjava_version = "2.1.0"
     ext.rxandroid_version = "2.0.1"
     ext.dagger_version = "2.11"
     ext.mockito_version = "2.7.22"
+    ext.glide_version = "4.0.0-RC1"
     repositories {
         google()
         jcenter()
