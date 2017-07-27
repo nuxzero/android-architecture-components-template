@@ -3,6 +3,7 @@ package com.example.nux.news.data
 import com.example.nux.news.data.local.NewsLocalDataSource
 import com.example.nux.news.data.models.News
 import com.example.nux.news.data.remote.NewsRemoteDataSource
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,14 +16,15 @@ NewsLocalDataSource)
 
     var mLocalData = localData
 
-    override fun loadNewses(): Observable<List<News>> {
-        return mRemoteData.loadNewses()
-                .flatMap { newses ->
-                    Observable.fromArray(newses)
-                            .doOnNext { nextNewses ->
-                                mLocalData.saveNewses(nextNewses)
-                            }
+    override fun loadNewsList(): Observable<List<News>> {
+        return mRemoteData.loadNewsList()
+                .doOnNext{ newsList ->
+                    mLocalData.saveNewsList(newsList)
                 }
+    }
+
+    override fun loadNews(title: String): Flowable<News> {
+        return mLocalData.loadNews(title)
     }
 
 }

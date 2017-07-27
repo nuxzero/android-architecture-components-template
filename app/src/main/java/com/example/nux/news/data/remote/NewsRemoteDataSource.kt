@@ -5,6 +5,6 @@ import io.reactivex.Observable
 
 interface NewsRemoteDataSource {
 
-    fun loadNewses(): Observable<List<News>>
+    fun loadNewsList(): Observable<List<News>>
 
 }

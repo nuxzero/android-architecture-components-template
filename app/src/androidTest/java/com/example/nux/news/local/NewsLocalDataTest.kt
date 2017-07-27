@@ -45,7 +45,7 @@ class NewsLocalDataTest {
         }
 
         // When
-        val actualNewses = localData.loadNewses()
+        val actualNewses = localData.loadNewsList()
 
         // Then
         Assert.assertEquals(newsesResponse.newses.size, actualNewses.size)
@@ -61,7 +61,7 @@ class NewsLocalDataTest {
         }
 
         // Then
-        Assert.assertEquals(newsesResponse.newses.size, database.newsDao().news.size)
+        Assert.assertEquals(newsesResponse.newses.size, database.newsDao().newsList.size)
     }
 
 }

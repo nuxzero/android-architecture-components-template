@@ -29,8 +29,8 @@ class NewsRemoteData(baseUrl: String) : NewsRemoteDataSource {
         mApiService = retrofit.create(NewsRemoteService::class.java)
     }
 
-    override fun loadNewses(): Observable<List<News>> {
-        return mApiService.getNewses()
+    override fun loadNewsList(): Observable<List<News>> {
+        return mApiService.getNewsList()
                 .flatMap { newsesResponse -> Observable.just(newsesResponse.newses) }
     }
 

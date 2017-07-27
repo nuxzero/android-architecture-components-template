@@ -1,11 +1,14 @@
 package com.example.nux.news.data.local
 
 import com.example.nux.news.data.models.News
+import io.reactivex.Flowable
 
 interface NewsLocalDataSource {
 
-    fun loadNewses() : List<News>
+    fun loadNewsList(): List<News>
 
-    fun saveNewses(newses: List<News>)
+    fun loadNews(title: String): Flowable<News>
+
+    fun saveNewsList(newsList: List<News>)
 
 }

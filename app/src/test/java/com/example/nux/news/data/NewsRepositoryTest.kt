@@ -48,15 +48,15 @@ class NewsRepositoryTest {
 
         // Give
         val NEWSES = NEWSES_RESPONSE.newses
-        `when`(mRemoteDataSource.loadNewses()).thenReturn(Observable.just(NEWSES))
+        `when`(mRemoteDataSource.loadNewsList()).thenReturn(Observable.just(NEWSES))
 
         // When
         val testObserver = TestObserver<List<News>>()
-        mRepository.loadNewses().subscribe(testObserver)
+        mRepository.loadNewsList().subscribe(testObserver)
 
         // Then
-        verify(mRemoteDataSource).loadNewses()
-        verify(mLocalDataSource).saveNewses(NEWSES)
+        verify(mRemoteDataSource).loadNewsList()
+        verify(mLocalDataSource).saveNewsList(NEWSES)
         testObserver.assertValue(NEWSES)
     }
 

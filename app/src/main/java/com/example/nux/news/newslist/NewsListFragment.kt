@@ -3,10 +3,10 @@ package com.example.nux.news.newslist
 import android.arch.lifecycle.LifecycleFragment
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +15,8 @@ import com.example.nux.news.app.NewsApplication
 import com.example.nux.news.data.models.News
 import com.example.nux.news.databinding.NewsItemBinding
 import com.example.nux.news.databinding.NewsListFragmentBinding
+import com.example.nux.news.news.NewsActivity
+import com.example.nux.news.news.NewsArgument
 import javax.inject.Inject
 
 class NewsListFragment : LifecycleFragment() {
@@ -28,7 +30,9 @@ class NewsListFragment : LifecycleFragment() {
 
     private val newsClickListener = object : NewsClickListener {
         override fun onClick(news: News) {
-            Log.d("NewsListFragment", "${news.title}")
+            val intent = Intent(context, NewsActivity::class.java)
+            intent.putExtra(NewsArgument.ARG_TITLE, news.title)
+            activity.startActivity(intent)
         }
     }
 
